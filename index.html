@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment -1 : Linear Data Structures </title>
+</head>
+<body>
+    <script>
+        document.write("***** Question - 1 *****<br><br>")
+        function pairsSum(){
+            let arr=[1,4,6,8,9,2,3];
+            let sum=5
+            document.write("Print All Pairs With Given Sum Number : - <br>")
+                for(var i=0;i<arr.length;i++){
+                    // console.log(arr[i]);
+                    for(var j=i+1;j<arr.length;j++){
+                        if(arr[i]+arr[j]==sum){
+                        document.write(`Sum of ${sum} array is : [${arr[i]} , ${arr[j]}] <br>`)
+                        }
+                    }   
+                }
+        }
+        pairsSum();
+        document.write("***************************************<br>")
+
+    </script>
+    <script>
+        document.write("<br>***** Question - 2 *****<br><br>")
+        function reverseArray(){
+            let arr=[1,2,3,4,5,6,7,8,9];
+            let reversedArray=arr.reverse();
+           document.write(`Reversed Array is :- [${reversedArray}] <br>`);
+           document.write(`Original Array is Updated :- [${arr}] <br>`)
+        }
+        reverseArray();
+        document.write("***************************************<br>")
+    </script>
+    <script> 
+        document.write("***** Question - 3 *****<br><br>")
+        function rotationString(s1,s2){
+            let combStr=s1+s2;
+            if(s1.length !== s2.length){
+                return false;
+            }
+            else if(combStr.substring(s2)) {
+                return true;
+            }
+        }
+        document.write("Rotation String ==> ",rotationString("abcd","cdab"),"<br>");
+        document.write("***************************************<br>")
+
+    </script>
+    <script>
+        document.write("***** Question - 4 *****<br><br>")
+        function nonRepeatedChar(){
+            let name="aasmasulthana";
+            let nonRepeated="";
+            for(let i=0;i<name.length;i++){
+                if(nonRepeated.indexOf(name.charAt(i))<0){
+                    nonRepeated +=name.charAt(i);
+                }
+            }
+            document.write(`First Non - Repeated  Character is :- "${nonRepeated[0]}"<br>`)
+            document.write(`All Non - Repeated  Characters are :- "${nonRepeated}"<br>`)
+
+        }
+        nonRepeatedChar();
+        document.write("<br>***************************************<br>")
+
+    </script>
+    <script>
+        document.write("***** Question - 5 *****<br><br>")
+        function towerOfHanoi(n,p1,p2,p3){
+            if(n===1){
+                document.write(`Move disk 1 from ${p1} to ${p3}<br>`);
+                return
+            }
+            
+                towerOfHanoi(n-1,p1,p2,p3);
+                document.write(`Move disk ${n} from ${p1} to ${p2}<br>`);
+                towerOfHanoi(n-1,p1,p2,p3);            
+        }
+        towerOfHanoi(3,'A','B','C')
+        document.write("<br>***************************************<br>")
+    </script>
+    <script>
+        document.write("***** Question - 6 *****<br><br>")
+        let postFix="ab-c+"
+        function postToPrefix(postFix){
+            let s=[];
+            for(var i=0;i<postFix.length;i++){
+                if(postFix[i]=='a'||postFix[i]=='b'||postFix[i]=='c'){
+                    s.push(postFix[i])
+                    // console.log(s)
+                }
+                else if(postFix[i]=='+'||postFix[i]=='-'||postFix[i]=='*'){
+                    let op1=s[s.length-1];
+                    s.pop();
+                    console.log(s)
+                    let op2=s[s.length-1];
+                    s.pop();
+                    let exp=postFix[i]+op2+op1                  
+                    s.push(exp);
+                }
+            }
+            document.write( `PostFix expression  (${postFix})  is converted into PreFix  expression ===> (${s[s.length-1]}) <br>`);
+        }
+        postToPrefix("ab-c+");
+        document.write("<br>***************************************<br>")
+
+    </script>
+    <script>
+        document.write("***** Question - 7 *****<br><br>")
+        function preToPostfix(preFix){
+            let s=[];
+            for(var i=preFix.length-1;i>=0;i--){
+                if(preFix[i]=='a'||preFix[i]=='b'||preFix[i]=='c'){
+                    s.push(preFix[i])
+                    // console.log(s)
+                }
+                else if(preFix[i]=='+'||preFix[i]=='-'||preFix[i]=='*'){
+                    let op1=s[s.length-1];
+                    s.pop();
+                    // console.log(s)
+                    let op2=s[s.length-1];
+                    s.pop();
+                    let exp=op1+op2+preFix[i]
+                    s.push(exp);
+                }
+            } 
+            document.write( `PreFix expression (${preFix})  is converted into PostFix expression ===> (${s[s.length-1]}) <br>`);
+            
+        }
+        preToPostfix("+-abc");
+        document.write("<br>***************************************<br>")
+
+    </script>
+    <script>
+        document.write("***** Question - 8 *****<br><br>")
+        function validBrackets(code){
+            let s=[];
+            for(var i=0;i<code.length;i++){
+                if(code[i]=='('){
+                    // console.log(code[i])
+                    s.push(code[i]);
+                }
+                if(code[i]==')'){
+                    // console.log(code[i])
+                    if(s.length==0){
+                    return false; 
+                    }
+                    s.pop();
+                }
+            }
+           return s.length==0
+        }        
+       document.write( "checking for Valid paranthesis () :-",validBrackets('()'),"<br>")
+       document.write( "checking for Valid paranthesis (] :-",validBrackets('(]'),"<br>")
+       document.write( "checking for Valid paranthesis (x+y):-",validBrackets('(x+y)'),"<br>")
+       document.write("<br>***************************************<br>")
+    </script>
+    <script>
+        document.write("***** Question - 9 *****<br><br>")
+        class resverseStack{
+            constructor(){
+                this.arr=[]
+            }
+            push(data){
+                this.arr.push(data)
+            }
+            output(){
+                document.write(`Ordered Stack ===> [${this.arr}]<br>`)
+                document.write(`Reverse Ordered Stack ===> [${this.arr.reverse()}]<br>`)
+                document.write(`Reverse Ordered Stack ===> [${Math.min(...this.arr)}]<br>`)
+            }
+        }
+        let Stack=new resverseStack();
+        Stack.push(1)
+        Stack.push(2)
+        Stack.push(3)
+        Stack.push(4)
+        Stack.push(5)
+        Stack.output();
+       document.write("<br>***************************************<br><br>")
+    </script>
+    <script>
+        document.write("***** Question - 10  *****<br><br>")
+        document.write("------------- Method 1 ------------------- <br><br>")
+        function smallestNum(arr){
+            let Stack=[];
+            for(var i=0;i<arr.length;i++){
+                if(arr[i]<arr[i+1]){
+                    Stack.push(arr[i])
+                }
+                
+            }
+            return Math.min(...Stack);
+        }
+        let arr1=[5,6,2,1,8];
+    document.write(`Smallest Number in a Stack [${arr1}] ====> [${smallestNum(arr1)}]<br>`)
+    document.write("<br>***************************************<br><br>")
+    document.write("----------------- Method 2 ------------------ <br><br>")
+    class SmallestInteger{
+            constructor(){
+                this.arr=[]
+            }
+            push(data){
+                this.arr.push(data)
+            }
+            output(){
+                document.write(`Smallest Number in a Stack [${this.arr}] ====>[${Math.min(...this.arr)}]<br>`)
+            }
+        }
+        let Stack1=new SmallestInteger();
+        Stack1.push(7)
+        Stack1.push(5)
+        Stack1.push(2)
+        Stack1.push(8)
+        Stack1.push(4)
+        Stack1.output();
+       document.write("<br>***************************************<br><br>")
+
+    </script>
+</body>
+
+</html>
